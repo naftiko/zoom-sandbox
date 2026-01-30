@@ -1,0 +1,70 @@
+meta {
+  name: List webinar attendees
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/webinar/attendees/list
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+  uuid: 
+}
+
+example {
+  name: Example webinar attendees response (Example webinar attendees request)
+  
+  request: {
+    url: {{baseUrl}}/webinar/attendees/list
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+      uuid: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "attendees": [
+            {
+              "first_name": "Zoomie",
+              "last_name": "Userton",
+              "email": "email_address",
+              "join_time": "2015-09-18T09:41:39.000Z",
+              "leave_time": "2015-09-18T09:42:12.000Z",
+              "time_in_session": "8",
+              "attended": "Yes",
+              "custom_questions": {
+                "which one do you like?": "sss"
+              },
+              "questions": {
+                "country": "US",
+                "address": "1234 Some Street",
+                "city": "Zoomville"
+              }
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

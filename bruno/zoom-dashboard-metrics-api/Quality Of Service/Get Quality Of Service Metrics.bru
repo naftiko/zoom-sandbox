@@ -1,0 +1,124 @@
+meta {
+  name: Get Quality Of Service Metrics
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/metrics/qos
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  meeting_id: 
+  type: 
+  user_id: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Successful QoS metrics response (Get QoS metrics request)
+  
+  request: {
+    url: {{baseUrl}}/metrics/qos
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      meeting_id: 
+      type: 
+      user_id: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "meeting_id": "unique_id",
+          "user_id": "unique_id",
+          "type": "Past Meeting",
+          "device": "Mac",
+          "ip_address": "112.80.63.6",
+          "cn": "CN",
+          "city": "Nanjing",
+          "version": "3.5.35288.1217",
+          "user_qos": [
+            {
+              "dateTime": "2015-08-30T06:40:56.000Z",
+              "audio_input": {
+                "bitrate": "29 kbps",
+                "latency": "39 ms",
+                "jitter": "11 ms",
+                "avg_loss": "2.5%",
+                "max_loss": "5.0%"
+              },
+              "audio_output": {
+                "bitrate": "",
+                "latency": "",
+                "jitter": "",
+                "avg_loss": "",
+                "max_loss": ""
+              },
+              "video_input": {
+                "bitrate": "77 kbps",
+                "latency": "84 ms",
+                "jitter": "4 ms",
+                "avg_loss": "28.3%",
+                "max_loss": "28.3%",
+                "resolution": "480*270",
+                "frame_rate": "3 fps"
+              },
+              "video_output": {
+                "bitrate": "",
+                "latency": "",
+                "jitter": "",
+                "avg_loss": "",
+                "max_loss": "",
+                "resolution": "",
+                "frame_rate": ""
+              },
+              "as_input": {
+                "bitrate": "",
+                "latency": "",
+                "jitter": "",
+                "avg_loss": "",
+                "max_loss": "",
+                "resolution": "",
+                "frame_rate": ""
+              },
+              "as_output": {
+                "bitrate": "",
+                "latency": "",
+                "jitter": "",
+                "avg_loss": "",
+                "max_loss": "",
+                "resolution": "",
+                "frame_rate": ""
+              },
+              "cpu_usage": {
+                "zoom_min_cpu_usage": "1%",
+                "zoom_avg_cpu_usage": "3%",
+                "zoom_max_cpu_usage": "5%",
+                "system_max_cpu_usage": "20%"
+              }
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

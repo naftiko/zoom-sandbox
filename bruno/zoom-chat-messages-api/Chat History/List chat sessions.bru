@@ -1,0 +1,85 @@
+meta {
+  name: List chat sessions
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/chat/list
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  access_token: 
+  from: 
+  to: 
+  page_size: 
+  email: 
+  next_page_token: 
+}
+
+example {
+  name: Successful list chat sessions response (Example request for listing chat sessions)
+  
+  request: {
+    url: {{baseUrl}}/chat/list
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      access_token: 
+      from: 
+      to: 
+      page_size: 
+      email: 
+      next_page_token: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "from": "2024-01-16T00:00:00.000Z",
+          "to": "2024-01-22T00:00:00.000Z",
+          "page_size": 30,
+          "page_count": 1,
+          "next_page_token": "",
+          "chat_list": [
+            {
+              "session_id": "sess_abc123def456",
+              "type": "Group",
+              "participants": "",
+              "group_name": "Engineering Team",
+              "last_message_send_time": "2024-01-18T06:40:56.000Z"
+            },
+            {
+              "session_id": "sess_ghi789jkl012",
+              "type": "Direct",
+              "participants": "user1@example.com,user2@example.com",
+              "group_name": "",
+              "last_message_send_time": "2024-01-20T14:22:30.000Z"
+            },
+            {
+              "session_id": "sess_mno345pqr678",
+              "type": "Group",
+              "participants": "",
+              "group_name": "Marketing Discussion",
+              "last_message_send_time": "2024-01-21T09:15:00.000Z"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

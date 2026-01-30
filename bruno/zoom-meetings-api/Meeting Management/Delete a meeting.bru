@@ -1,0 +1,53 @@
+meta {
+  name: Delete a meeting
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/meeting/delete
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+  occurrence_id: 
+}
+
+example {
+  name: Delete Meeting Success Response (Delete Meeting Request)
+  
+  request: {
+    url: {{baseUrl}}/meeting/delete
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+      occurrence_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "123456789",
+          "deleted_at": "2024-01-15T15:00:00.000Z"
+        }
+      '''
+    }
+  }
+}

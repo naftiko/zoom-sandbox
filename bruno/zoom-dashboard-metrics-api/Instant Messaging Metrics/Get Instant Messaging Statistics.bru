@@ -1,0 +1,82 @@
+meta {
+  name: Get Instant Messaging Statistics
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/metrics/im
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  from: 
+  to: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Successful IM statistics response (Get IM statistics request)
+  
+  request: {
+    url: {{baseUrl}}/metrics/im
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      from: 
+      to: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "from": "2016-04-12T00:00:00.000Z",
+          "to": "2016-04-13T00:00:00.000Z",
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 10,
+          "users": [
+            {
+              "user_id": "unique_id",
+              "user_name": "Zoomie Userton",
+              "email": "email_address",
+              "total_send": 0,
+              "total_receive": 0,
+              "group_send": 0,
+              "group_receive": 0,
+              "calls_send": 0,
+              "calls_receive": 0,
+              "files_send": 0,
+              "files_receive": 0,
+              "images_send": 0,
+              "images_receive": 0,
+              "voice_send": 0,
+              "voice_receive": 0,
+              "videos_send": 0,
+              "videos_receive": 0,
+              "emoji_send": 0,
+              "emoji_receive": 0
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

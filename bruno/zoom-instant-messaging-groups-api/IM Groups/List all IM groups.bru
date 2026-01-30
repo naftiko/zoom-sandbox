@@ -1,0 +1,72 @@
+meta {
+  name: List all IM groups
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/im/group/list
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  api_key: 
+  api_secret: 
+}
+
+example {
+  name: List IM Groups Success Response (API Credentials Request)
+  
+  request: {
+    url: {{baseUrl}}/im/group/list
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      api_key: 
+      api_secret: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "total_records": 2,
+          "groups": [
+            {
+              "group_id": "grp_abc123def456",
+              "account_id": "acc_xyz789ghi012",
+              "name": "Engineering Team Chat",
+              "total_members": 12,
+              "option_search_by_domain": false,
+              "option_search_by_account": true,
+              "option_search_by_ma_account": false,
+              "last_modified_time": "2024-01-10T07:45:41.000Z"
+            },
+            {
+              "group_id": "grp_mno345pqr678",
+              "account_id": "acc_xyz789ghi012",
+              "name": "Marketing Team Chat",
+              "total_members": 8,
+              "option_search_by_domain": true,
+              "option_search_by_account": true,
+              "option_search_by_ma_account": false,
+              "last_modified_time": "2024-01-12T14:30:22.000Z"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,105 @@
+meta {
+  name: Get plan information
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/ma/account/plan/get
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  account_id: 
+}
+
+example {
+  name: Successful get plan information response (Example request with account ID)
+  
+  request: {
+    url: {{baseUrl}}/ma/account/plan/get
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      account_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "email": "owner@example.com",
+          "first_name": "Jane",
+          "last_name": "Doe",
+          "phone_number": "+1-555-123-4567",
+          "address": "123 Business Ave",
+          "apt": "Suite 500",
+          "city": "San Francisco",
+          "state": "CA",
+          "zip": "94105",
+          "country": "US",
+          "plan_base": {
+            "type": "monthly",
+            "hosts": 9
+          },
+          "plan_zoom_rooms": {
+            "type": "zroom_monthly",
+            "hosts": 9
+          },
+          "plan_room_connector": {
+            "type": "roomconnector_yearly",
+            "hosts": 9
+          },
+          "plan_large_meeting": [
+            {
+              "type": "large100_monthly",
+              "hosts": 9
+            },
+            {
+              "type": "large200_monthly",
+              "hosts": 9
+            },
+            {
+              "type": "large300_yearly",
+              "hosts": 9
+            }
+          ],
+          "plan_webinar": [
+            {
+              "type": "webinar100_monthly",
+              "hosts": 9
+            },
+            {
+              "type": "webinar500_yearly",
+              "hosts": 9
+            },
+            {
+              "type": "webinar1000_yearly",
+              "hosts": 9
+            }
+          ],
+          "plan_recording": "cmr_monthly_commitment_500",
+          "plan_audio": {
+            "type": "tollfree_monthly_commitment_100",
+            "tollfree_country": "AT",
+            "premium_country": "TW",
+            "callout": 1,
+            "ddi_numbers": 66
+          }
+        }
+      '''
+    }
+  }
+}

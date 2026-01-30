@@ -1,0 +1,71 @@
+meta {
+  name: List Zoom Rooms
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/metrics/zoomrooms
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Successful Zoom Rooms list response (List Zoom Rooms request)
+  
+  request: {
+    url: {{baseUrl}}/metrics/zoomrooms
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 2,
+          "zoom_rooms": [
+            {
+              "id": "unique_id",
+              "room_name": "zoom room1",
+              "email": "zoomroom1@zoom.us",
+              "account_type": "Work Email",
+              "passcode": "123",
+              "status": "Available",
+              "messages": {
+                "last_started_time": "",
+                "running_time": "",
+                "selected_microphone": "",
+                "selected_speaker": "",
+                "selected_camera": ""
+              },
+              "meeting_id": ""
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

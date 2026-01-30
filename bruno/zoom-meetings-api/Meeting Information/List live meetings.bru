@@ -1,0 +1,79 @@
+meta {
+  name: List live meetings
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/meeting/live
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  api_key: 
+  api_secret: 
+}
+
+example {
+  name: List Live Meetings Success Response (API Credentials Request)
+  
+  request: {
+    url: {{baseUrl}}/meeting/live
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      api_key: 
+      api_secret: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "page_count": 1,
+          "total_records": 3,
+          "page_number": 1,
+          "page_size": 50,
+          "meetings": [
+            {
+              "uuid": "mtg_uuid_live123",
+              "id": "111222333",
+              "start_url": "https://zoom.us/s/111222333?zak=eyJ0eXAiOiJKV1Q",
+              "join_url": "https://zoom.us/j/111222333",
+              "created_at": "2024-01-15T08:00:00.000Z",
+              "host_id": "usr_xyz789",
+              "topic": "All Hands Meeting",
+              "type": 2,
+              "status": 1,
+              "start_time": "2024-01-15T14:00:00.000Z",
+              "duration": 60,
+              "timezone": "America/Los_Angeles",
+              "password": "allhands",
+              "h323_password": "999888",
+              "option_jbh": true,
+              "option_start_type": "video",
+              "option_host_video": true,
+              "option_participants_video": true,
+              "option_audio": "both",
+              "option_enforce_login": false,
+              "option_enforce_login_domains": "",
+              "option_alternative_hosts": ""
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

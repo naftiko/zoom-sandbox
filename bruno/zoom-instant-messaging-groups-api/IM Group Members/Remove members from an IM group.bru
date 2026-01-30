@@ -1,0 +1,52 @@
+meta {
+  name: Remove members from an IM group
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/im/group/member/delete
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  member_ids: 
+}
+
+example {
+  name: Delete Members Success Response (IM Group Member Modify Request)
+  
+  request: {
+    url: {{baseUrl}}/im/group/member/delete
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      member_ids: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "grp_abc123def456",
+          "deleted_at": "2024-01-15T08:57:38.000Z",
+          "deleted_count": 2
+        }
+      '''
+    }
+  }
+}

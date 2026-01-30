@@ -1,0 +1,77 @@
+meta {
+  name: Get user report
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/report/getuserreport
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  user_id: 
+  from: 
+  to: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Example user report response (Example user report request)
+  
+  request: {
+    url: {{baseUrl}}/report/getuserreport
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      user_id: 
+      from: 
+      to: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 5,
+          "from": "2013-05-19",
+          "to": "2013-05-20",
+          "meetings": [
+            {
+              "number": 111111111,
+              "topic": "Meeting Topic",
+              "start_time": "2013-02-11T08:18:09.000Z",
+              "end_time": "2013-02-11T09:18:09.000Z",
+              "duration": 60,
+              "participants": [
+                {
+                  "name": "John",
+                  "join_time": "2013-02-11T08:30:09.000Z",
+                  "leave_time": "2013-02-11T08:50:09.000Z"
+                }
+              ]
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

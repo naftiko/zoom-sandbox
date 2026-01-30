@@ -1,0 +1,70 @@
+meta {
+  name: Get webinar registration info
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/webinar/registration
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+  occurrence_id: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Example registration info response (Example registration info request)
+  
+  request: {
+    url: {{baseUrl}}/webinar/registration
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+      occurrence_id: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 1,
+          "attendees": [
+            {
+              "id": "unique_id",
+              "first_name": "Zoomie",
+              "last_name": "Userton",
+              "create_time": "2015-08-23T03:03:48.000Z",
+              "approval": "approved",
+              "email": "email_address",
+              "registration_url": "https://api.zoom.us/w/206388466?tk=..."
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

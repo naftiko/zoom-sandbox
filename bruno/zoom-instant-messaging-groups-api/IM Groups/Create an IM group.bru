@@ -1,0 +1,62 @@
+meta {
+  name: Create an IM group
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/im/group/create
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  name: 
+  type: 
+  option_search_by_domain: 
+  option_search_by_account: 
+  option_search_by_ma: 
+}
+
+example {
+  name: Create IM Group Success Response (Create IM Group Request)
+  
+  request: {
+    url: {{baseUrl}}/im/group/create
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      name: 
+      type: 
+      option_search_by_domain: 
+      option_search_by_account: 
+      option_search_by_ma: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "group_id": "grp_abc123def456",
+          "account_id": "acc_xyz789ghi012",
+          "name": "Engineering Team Chat",
+          "total_members": 0,
+          "option_search_by_domain": false,
+          "option_search_by_account": true,
+          "option_search_by_ma_account": false
+        }
+      '''
+    }
+  }
+}

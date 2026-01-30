@@ -1,0 +1,90 @@
+meta {
+  name: Register for a meeting
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/meeting/register
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  email: 
+  first_name: 
+  last_name: 
+  address: 
+  city: 
+  country: 
+  zip: 
+  state: 
+  phone: 
+  industry: 
+  org: 
+  job_title: 
+  purchasing_time_frame: 
+  role_in_purchase_process: 
+  no_of_employees: 
+  comments: 
+  custom_questions: 
+  language: 
+  occurrence_ids: 
+}
+
+example {
+  name: Register For Meeting Success Response (Register For Meeting Request)
+  
+  request: {
+    url: {{baseUrl}}/meeting/register
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      email: 
+      first_name: 
+      last_name: 
+      address: 
+      city: 
+      country: 
+      zip: 
+      state: 
+      phone: 
+      industry: 
+      org: 
+      job_title: 
+      purchasing_time_frame: 
+      role_in_purchase_process: 
+      no_of_employees: 
+      comments: 
+      custom_questions: 
+      language: 
+      occurrence_ids: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "registrant_id": "reg_abc123def456",
+          "id": "123456789",
+          "topic": "Quarterly Business Review",
+          "start_time": "2024-02-15T10:00:00.000Z",
+          "join_url": "https://zoom.us/w/123456789?tk=abc123def456&pwd=encoded_password"
+        }
+      '''
+    }
+  }
+}

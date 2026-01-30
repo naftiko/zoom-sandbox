@@ -1,0 +1,69 @@
+meta {
+  name: List webinar registrants
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/webinar/registrants/list
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+  type: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Example registrants list response (Example list registrants request)
+  
+  request: {
+    url: {{baseUrl}}/webinar/registrants/list
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+      type: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 1,
+          "type": 0,
+          "users": [
+            {
+              "id": "unique_id",
+              "first_name": "Zoomie",
+              "last_name": "Userton",
+              "email": "email_address",
+              "registration_time": "2016-08-18T01:45:26.000Z"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

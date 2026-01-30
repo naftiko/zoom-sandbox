@@ -1,0 +1,81 @@
+meta {
+  name: Update webinar
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/webinar/update
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+  topic: 
+  type: 
+  start_time: 
+  duration: 
+  timezone: 
+  password: 
+  agenda: 
+  option_audio: 
+  option_host_video: 
+  option_panelist_video: 
+  option_practice_session: 
+  option_enforce_login: 
+  option_auto_record_type: 
+  panelists: 
+  language: 
+}
+
+example {
+  name: Example webinar update response (Example update webinar request)
+  
+  request: {
+    url: {{baseUrl}}/webinar/update
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+      topic: 
+      type: 
+      start_time: 
+      duration: 
+      timezone: 
+      password: 
+      agenda: 
+      option_audio: 
+      option_host_video: 
+      option_panelist_video: 
+      option_practice_session: 
+      option_enforce_login: 
+      option_auto_record_type: 
+      panelists: 
+      language: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "421431292",
+          "updated_at": "2016-08-18T02:11:40.000Z"
+        }
+      '''
+    }
+  }
+}

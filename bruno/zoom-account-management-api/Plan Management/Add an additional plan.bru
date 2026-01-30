@@ -1,0 +1,51 @@
+meta {
+  name: Add an additional plan
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/ma/account/plan/add
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  account_id: 
+  plan: 
+}
+
+example {
+  name: Successful additional plan added response (Example request for adding an additional plan)
+  
+  request: {
+    url: {{baseUrl}}/ma/account/plan/add
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      account_id: 
+      plan: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "abc123def456",
+          "updated_at": "2024-01-19T16:30:00.000Z"
+        }
+      '''
+    }
+  }
+}

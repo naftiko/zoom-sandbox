@@ -1,0 +1,49 @@
+meta {
+  name: Delete a sub-account
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/ma/account/delete
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  account_id: 
+}
+
+example {
+  name: Successful delete sub-account response (Example request with account ID)
+  
+  request: {
+    url: {{baseUrl}}/ma/account/delete
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      account_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "abc123def456",
+          "deleted_at": "2024-01-17T09:00:00.000Z"
+        }
+      '''
+    }
+  }
+}

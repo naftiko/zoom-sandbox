@@ -1,0 +1,52 @@
+meta {
+  name: Add members to a group
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/group/member/add
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  member_ids: 
+}
+
+example {
+  name: Add Group Members Success Response (Group Member Modify Request)
+  
+  request: {
+    url: {{baseUrl}}/group/member/add
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      member_ids: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "grp_abc123def456",
+          "add_at": "2024-01-15T08:57:38.000Z",
+          "add_count": 2
+        }
+      '''
+    }
+  }
+}

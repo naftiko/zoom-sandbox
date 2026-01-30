@@ -1,0 +1,74 @@
+meta {
+  name: Get account report
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/report/getaccountreport
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  from: 
+  to: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Example account report response (Example account report request)
+  
+  request: {
+    url: {{baseUrl}}/report/getaccountreport
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      from: 
+      to: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 5,
+          "from": "2013-05-19",
+          "to": "2013-05-20",
+          "total_meetings": 50,
+          "total_participants": 100,
+          "total_meeting_minutes": 100,
+          "users": [
+            {
+              "user_id": "bNsPi5hCQ-qOzWn2EeCXJA",
+              "email": "john@sample.com",
+              "type": 2,
+              "meetings": 10,
+              "participants": 56,
+              "meeting_minutes": 300,
+              "last_client_version": "1.0.18584.0225",
+              "last_login_time": "2013-02-11T08:18:09.000Z"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

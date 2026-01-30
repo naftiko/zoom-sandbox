@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "zoom-dashboard-metrics-api",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

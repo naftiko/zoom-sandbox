@@ -1,0 +1,86 @@
+meta {
+  name: Get meeting details
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/meeting/get
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+}
+
+example {
+  name: Get Meeting Success Response (Meeting Host Request)
+  
+  request: {
+    url: {{baseUrl}}/meeting/get
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "uuid": "mtg_uuid_abc123",
+          "id": "123456789",
+          "host_id": "usr_abc123def456",
+          "topic": "Weekly Team Standup",
+          "password": "meeting123",
+          "h323_password": "123456",
+          "status": 0,
+          "option_jbh": true,
+          "option_start_type": "video",
+          "option_host_video": true,
+          "option_participants_video": false,
+          "option_cn_meeting": false,
+          "option_enforce_login": false,
+          "option_enforce_login_domains": "",
+          "option_in_meeting": false,
+          "option_audio": "both",
+          "option_alternative_hosts": "",
+          "option_use_pmi": false,
+          "type": 8,
+          "start_time": "2024-02-01T09:00:00.000Z",
+          "duration": 30,
+          "timezone": "America/New_York",
+          "start_url": "https://zoom.us/s/123456789?zak=eyJ0eXAiOiJKV1Q",
+          "join_url": "https://zoom.us/j/123456789",
+          "created_at": "2024-01-15T14:30:00.000Z",
+          "occurrences": [
+            {
+              "occurrence_id": "1706778000000",
+              "start_time": "2024-02-01T09:00:00.000Z",
+              "duration": 30
+            },
+            {
+              "occurrence_id": "1707382800000",
+              "start_time": "2024-02-08T09:00:00.000Z",
+              "duration": 30
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

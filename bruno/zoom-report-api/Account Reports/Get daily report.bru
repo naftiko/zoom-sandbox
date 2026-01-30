@@ -1,0 +1,60 @@
+meta {
+  name: Get daily report
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/report/getdailyreport
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  year: 
+  month: 
+}
+
+example {
+  name: Example daily report response (Example daily report request)
+  
+  request: {
+    url: {{baseUrl}}/report/getdailyreport
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      year: 
+      month: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "year": 2013,
+          "month": 5,
+          "dates": [
+            {
+              "date": "2013-05-01T00:00:00.000Z",
+              "meetings": 0,
+              "new_user": 0,
+              "participants": 0,
+              "meeting_minutes": 0
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

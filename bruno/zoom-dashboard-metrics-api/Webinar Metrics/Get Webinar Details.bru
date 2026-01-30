@@ -1,0 +1,90 @@
+meta {
+  name: Get Webinar Details
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/metrics/webinardetail
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  meeting_id: 
+  type: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Successful webinar details response (Get webinar details request)
+  
+  request: {
+    url: {{baseUrl}}/metrics/webinardetail
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      meeting_id: 
+      type: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "uuid": "unique_id",
+          "id": "123456789",
+          "type": "Past Webinar",
+          "host": "Zoomie Userton",
+          "email": "email_address",
+          "user_type": "Pro",
+          "start_time": "2015-08-30T05:36:56.000Z",
+          "end_time": "2015-08-30T06:36:56.000Z",
+          "duration": "4 mins",
+          "has_pstn": false,
+          "has_voip": true,
+          "has_3rd_party_audio": false,
+          "has_video": true,
+          "has_screen_share": false,
+          "recording": 0,
+          "participants_count": 2,
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "participants": [
+            {
+              "id": "unique_id",
+              "user_id": "unique_id",
+              "user_name": "Zoomie Userton",
+              "device": "Mac",
+              "ip_address": "117.83.222.228",
+              "cn": "CN",
+              "city": "Nanjing",
+              "network_type": "Wifi",
+              "join_time": "2017-02-18T01:44:47.000Z",
+              "leave_time": "2017-02-18T01:45:58.000Z",
+              "share_application": true,
+              "share_desktop": true,
+              "share_whiteboard": true,
+              "recording": true
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

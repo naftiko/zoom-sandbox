@@ -1,0 +1,53 @@
+meta {
+  name: Update a group
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/group/edit
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  name: 
+}
+
+example {
+  name: Update Group Success Response (Update Group Request)
+  
+  request: {
+    url: {{baseUrl}}/group/edit
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      name: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "group_id": "grp_abc123def456",
+          "account_id": "acc_xyz789ghi012",
+          "name": "Engineering Department Updated",
+          "total_members": 15
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,81 @@
+meta {
+  name: List Webinars Metrics
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/metrics/webinars
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  type: 
+  from: 
+  to: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Successful webinars metrics list response (List webinars metrics request)
+  
+  request: {
+    url: {{baseUrl}}/metrics/webinars
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      type: 
+      from: 
+      to: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "from": "2015-08-02T00:00:00.000Z",
+          "to": "2015-09-02T00:00:00.000Z",
+          "page_count": 2,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 49,
+          "type": "Past Webinars",
+          "meetings": [
+            {
+              "uuid": "unique_id",
+              "id": "123456789",
+              "host": "Zoomie Userton",
+              "email": "email_address",
+              "user_type": "Pro",
+              "start_time": "2015-08-29T05:36:56.000Z",
+              "end_time": "2015-08-29T06:36:56.000Z",
+              "duration": "4 mins",
+              "participants": 2,
+              "has_pstn": false,
+              "has_voip": true,
+              "has_3rd_party_audio": false,
+              "has_video": true,
+              "has_screen_share": false,
+              "recording": 0
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

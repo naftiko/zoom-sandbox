@@ -1,0 +1,50 @@
+meta {
+  name: Delete an IM group
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/im/group/delete
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+}
+
+example {
+  name: Delete IM Group Success Response (IM Group ID Request)
+  
+  request: {
+    url: {{baseUrl}}/im/group/delete
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "grp_abc123def456",
+          "deleted_at": "2024-01-15T08:41:58.000Z",
+          "deleted_count": 1
+        }
+      '''
+    }
+  }
+}

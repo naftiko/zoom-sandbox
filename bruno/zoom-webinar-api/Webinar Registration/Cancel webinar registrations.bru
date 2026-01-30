@@ -1,0 +1,55 @@
+meta {
+  name: Cancel webinar registrations
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/webinar/registration/cancel
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+  occurrence_id: 
+  registrant_ids: 
+}
+
+example {
+  name: Example webinar update response (Example cancel registration request)
+  
+  request: {
+    url: {{baseUrl}}/webinar/registration/cancel
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+      occurrence_id: 
+      registrant_ids: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "421431292",
+          "updated_at": "2016-08-18T02:11:40.000Z"
+        }
+      '''
+    }
+  }
+}

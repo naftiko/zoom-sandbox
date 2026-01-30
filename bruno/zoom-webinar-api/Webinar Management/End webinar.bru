@@ -1,0 +1,51 @@
+meta {
+  name: End webinar
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/webinar/end
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+}
+
+example {
+  name: Example end webinar response (Example webinar ID request)
+  
+  request: {
+    url: {{baseUrl}}/webinar/end
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "123456789",
+          "ended_at": "2012-11-25T12:00:00.000Z"
+        }
+      '''
+    }
+  }
+}

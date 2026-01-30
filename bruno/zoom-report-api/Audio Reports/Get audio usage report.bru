@@ -1,0 +1,75 @@
+meta {
+  name: Get audio usage report
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/report/getaudioreport
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  from: 
+  to: 
+  type: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Example audio report response (Example audio report request)
+  
+  request: {
+    url: {{baseUrl}}/report/getaudioreport
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      from: 
+      to: 
+      type: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "from": "2016-01-08T00:00:00.000Z",
+          "to": "2016-01-21T00:00:00.000Z",
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 1,
+          "telephony_usage": [
+            {
+              "meeting_id": 2932547621,
+              "phone_number": "+86 8208",
+              "type": "call-out",
+              "host_name": "test",
+              "host_email": "zoom.test@zoom.us",
+              "department": "",
+              "start_time": "2016-01-12T02:25:34.000Z",
+              "end_time": "2016-01-12T02:26:48.000Z",
+              "duration": 2,
+              "total": 0.12
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

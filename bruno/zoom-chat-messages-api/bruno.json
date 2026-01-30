@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "zoom-chat-messages-api",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

@@ -1,0 +1,51 @@
+meta {
+  name: Create a group
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/group/create
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  name: 
+}
+
+example {
+  name: Create Group Success Response (Create Group Request)
+  
+  request: {
+    url: {{baseUrl}}/group/create
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      name: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "group_id": "grp_abc123def456",
+          "account_id": "acc_xyz789ghi012",
+          "name": "Engineering Department",
+          "total_members": 0
+        }
+      '''
+    }
+  }
+}

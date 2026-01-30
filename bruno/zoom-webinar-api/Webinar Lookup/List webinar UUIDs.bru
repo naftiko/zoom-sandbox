@@ -1,0 +1,55 @@
+meta {
+  name: List webinar UUIDs
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/webinar/uuid/list
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+}
+
+example {
+  name: Example webinar UUID list response (Example webinar ID request)
+  
+  request: {
+    url: {{baseUrl}}/webinar/uuid/list
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "webinars": [
+            {
+              "uuid": "unique_id",
+              "start_time": "2015-08-23T03:03:48.000Z"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,48 @@
+meta {
+  name: Check email existence
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/user/checkemail
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  email: 
+}
+
+example {
+  name: Example check email response (Example check email request)
+  
+  request: {
+    url: {{baseUrl}}/user/checkemail
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      email: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "existed_email": true
+        }
+      '''
+    }
+  }
+}

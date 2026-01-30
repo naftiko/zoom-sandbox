@@ -1,0 +1,95 @@
+meta {
+  name: Update a meeting
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/meeting/update
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+  type: 
+  topic: 
+  start_time: 
+  duration: 
+  timezone: 
+  password: 
+  recurrence: 
+  option_registration: 
+  registration_type: 
+  option_jbh: 
+  option_start_type: 
+  option_host_video: 
+  option_participants_video: 
+  option_cn_meeting: 
+  option_in_meeting: 
+  option_audio: 
+  option_enforce_login: 
+  option_enforce_login_domains: 
+  option_alternative_hosts: 
+  option_alternative_host_ids: 
+  option_use_pmi: 
+  option_auto_record_type: 
+}
+
+example {
+  name: Update Meeting Success Response (Update Meeting Request)
+  
+  request: {
+    url: {{baseUrl}}/meeting/update
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+      type: 
+      topic: 
+      start_time: 
+      duration: 
+      timezone: 
+      password: 
+      recurrence: 
+      option_registration: 
+      registration_type: 
+      option_jbh: 
+      option_start_type: 
+      option_host_video: 
+      option_participants_video: 
+      option_cn_meeting: 
+      option_in_meeting: 
+      option_audio: 
+      option_enforce_login: 
+      option_enforce_login_domains: 
+      option_alternative_hosts: 
+      option_alternative_host_ids: 
+      option_use_pmi: 
+      option_auto_record_type: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "123456789",
+          "updated_at": "2024-01-15T16:00:00.000Z"
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,58 @@
+meta {
+  name: Create a new device
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/h323/device/create
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  name: 
+  ip: 
+  protocol_type: 
+  encryption_type: 
+}
+
+example {
+  name: Successful device creation response (Example request for creating a device)
+  
+  request: {
+    url: {{baseUrl}}/h323/device/create
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      name: 
+      ip: 
+      protocol_type: 
+      encryption_type: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "dev_abc123def456",
+          "name": "Conference Room A - Polycom",
+          "ip": "192.168.1.100",
+          "protocol_type": 1,
+          "encryption_type": 2
+        }
+      '''
+    }
+  }
+}

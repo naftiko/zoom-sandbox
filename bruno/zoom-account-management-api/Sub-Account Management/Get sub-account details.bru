@@ -1,0 +1,51 @@
+meta {
+  name: Get sub-account details
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/ma/account/get
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  account_id: 
+}
+
+example {
+  name: Successful get sub-account response (Example request with account ID)
+  
+  request: {
+    url: {{baseUrl}}/ma/account/get
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      account_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "abc123def456",
+          "owner_id": "usr789xyz012",
+          "owner_email": "owner@example.com",
+          "created_at": "2024-01-15T10:30:00.000Z"
+        }
+      '''
+    }
+  }
+}

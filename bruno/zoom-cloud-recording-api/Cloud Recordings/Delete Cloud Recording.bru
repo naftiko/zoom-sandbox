@@ -1,0 +1,51 @@
+meta {
+  name: Delete Cloud Recording
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/recording/delete
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  meeting_id: 
+  file_id: 
+}
+
+example {
+  name: Successful deletion response (Delete cloud recording request)
+  
+  request: {
+    url: {{baseUrl}}/recording/delete
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      meeting_id: 
+      file_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "unique_id",
+          "deleted_at": "2012-11-25T12:00:00.000Z"
+        }
+      '''
+    }
+  }
+}

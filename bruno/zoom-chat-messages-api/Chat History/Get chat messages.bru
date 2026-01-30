@@ -1,0 +1,81 @@
+meta {
+  name: Get chat messages
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/chat/get
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  access_token: 
+  session_id: 
+  from: 
+  to: 
+  page_size: 
+  next_page_token: 
+}
+
+example {
+  name: Successful get chat messages response (Example request for getting chat messages)
+  
+  request: {
+    url: {{baseUrl}}/chat/get
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      access_token: 
+      session_id: 
+      from: 
+      to: 
+      page_size: 
+      next_page_token: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "session_id": "sess_abc123def456",
+          "group_name": "Engineering Team",
+          "from": "2024-01-16T00:00:00.000Z",
+          "to": "2024-01-22T00:00:00.000Z",
+          "page_size": 30,
+          "page_count": 1,
+          "next_page_token": "",
+          "chat_messages": [
+            {
+              "message": "Hello team, let's discuss the new feature implementation.",
+              "sender": "john.smith@example.com",
+              "date_time": "2024-01-18T06:40:56.000Z"
+            },
+            {
+              "message": "Sounds good! I've prepared the technical design document.",
+              "sender": "jane.doe@example.com",
+              "date_time": "2024-01-18T06:42:15.000Z"
+            },
+            {
+              "message": "Great, let's review it in our standup tomorrow.",
+              "sender": "john.smith@example.com",
+              "date_time": "2024-01-18T06:45:30.000Z"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

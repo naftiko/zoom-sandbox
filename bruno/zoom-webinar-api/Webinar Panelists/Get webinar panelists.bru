@@ -1,0 +1,57 @@
+meta {
+  name: Get webinar panelists
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/webinar/panelists
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+}
+
+example {
+  name: Example webinar panelists response (Example webinar ID request)
+  
+  request: {
+    url: {{baseUrl}}/webinar/panelists
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "total_records": 1,
+          "panelists": [
+            {
+              "name": "Zoomie Userton",
+              "email": "email_address",
+              "join_url": "https://www.zoom.us/w/552681828?tk=TMnju_..."
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

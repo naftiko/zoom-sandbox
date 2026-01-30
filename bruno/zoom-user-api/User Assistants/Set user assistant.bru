@@ -1,0 +1,54 @@
+meta {
+  name: Set user assistant
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/user/assistant/set
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_email: 
+  assistant_email: 
+}
+
+example {
+  name: Example assistant response (Example set assistant request)
+  
+  request: {
+    url: {{baseUrl}}/user/assistant/set
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_email: 
+      assistant_email: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "unique_id",
+          "host_email": "email_address",
+          "updated_at": "2013-09-02T12:00:00.000Z"
+        }
+      '''
+    }
+  }
+}

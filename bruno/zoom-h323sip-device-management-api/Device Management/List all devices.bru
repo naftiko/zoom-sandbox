@@ -1,0 +1,76 @@
+meta {
+  name: List all devices
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/h323/device/list
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Successful list devices response (Example request for listing devices)
+  
+  request: {
+    url: {{baseUrl}}/h323/device/list
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 3,
+          "devices": [
+            {
+              "id": "dev_abc123def456",
+              "name": "Conference Room A - Polycom",
+              "ip": "192.168.1.100",
+              "protocol_type": 1,
+              "encryption_type": 2
+            },
+            {
+              "id": "dev_ghi789jkl012",
+              "name": "Executive Boardroom - Cisco",
+              "ip": "192.168.1.101",
+              "protocol_type": 2,
+              "encryption_type": 1
+            },
+            {
+              "id": "dev_mno345pqr678",
+              "name": "Training Room - Lifesize",
+              "ip": "192.168.1.102",
+              "protocol_type": 1,
+              "encryption_type": 0
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

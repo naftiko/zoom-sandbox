@@ -1,0 +1,69 @@
+meta {
+  name: Get Cloud Recording Details
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/recording/get
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  meeting_id: 
+}
+
+example {
+  name: Successful response with recording details (Get cloud recording request)
+  
+  request: {
+    url: {{baseUrl}}/recording/get
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      meeting_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "uuid": "unique_id",
+          "meeting_number": "123456789",
+          "host_id": "unique_id",
+          "account_id": "unique_id",
+          "topic": "Meeting Topic",
+          "start_time": "2015-04-13T01:06:04.000Z",
+          "timezone": "UTC",
+          "duration": 1,
+          "total_size": 686496,
+          "recording_count": 3,
+          "recording_files": [
+            {
+              "id": "unique_id",
+              "meeting_id": "unique_id",
+              "recording_start": "2015-04-13T01:06:36.000Z",
+              "recording_end": "2015-04-13T01:06:47.000Z",
+              "file_type": "MP4",
+              "file_size": 438482,
+              "play_url": "https://brand.zoom.us/recording/play/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2",
+              "download_url": "https://brand.zoom.us/recording/download/HzMyuI23bqxlJLVJLrww3L9ZuFeZEvYtG0vQ6pHhp6Twr6GPjX4Qks_CJak7jrU2"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

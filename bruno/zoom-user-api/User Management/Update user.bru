@@ -1,0 +1,69 @@
+meta {
+  name: Update user
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/user/update
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  type: 
+  first_name: 
+  last_name: 
+  disable_chat: 
+  enable_e2e_encryption: 
+  dept: 
+  timezone: 
+  vanity_name: 
+  host_key: 
+  pmi: 
+}
+
+example {
+  name: Example update user response (Example update user request)
+  
+  request: {
+    url: {{baseUrl}}/user/update
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      type: 
+      first_name: 
+      last_name: 
+      disable_chat: 
+      enable_e2e_encryption: 
+      dept: 
+      timezone: 
+      vanity_name: 
+      host_key: 
+      pmi: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "unique_id",
+          "updated_at": "2012-11-25T12:00:00.000Z"
+        }
+      '''
+    }
+  }
+}

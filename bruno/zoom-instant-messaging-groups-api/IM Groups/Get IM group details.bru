@@ -1,0 +1,54 @@
+meta {
+  name: Get IM group details
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/im/group/get
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+}
+
+example {
+  name: Get IM Group Success Response (IM Group ID Request)
+  
+  request: {
+    url: {{baseUrl}}/im/group/get
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "group_id": "grp_abc123def456",
+          "account_id": "acc_xyz789ghi012",
+          "name": "Engineering Team Chat",
+          "total_members": 12,
+          "option_search_by_domain": false,
+          "option_search_by_account": true,
+          "option_search_by_ma_account": false
+        }
+      '''
+    }
+  }
+}

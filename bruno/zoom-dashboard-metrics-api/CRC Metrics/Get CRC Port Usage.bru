@@ -1,0 +1,63 @@
+meta {
+  name: Get CRC Port Usage
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/metrics/crc
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  from: 
+  to: 
+}
+
+example {
+  name: Successful CRC port usage response (Get CRC port usage request)
+  
+  request: {
+    url: {{baseUrl}}/metrics/crc
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      from: 
+      to: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "from": "2015-03-12T00:00:00.000Z",
+          "to": "2015-03-12T00:00:00.000Z",
+          "crc_ports_usage": [
+            {
+              "date_time": "2015-03-12T00:00:00.000Z",
+              "crc_ports_hour_usage": [
+                {
+                  "hour": "00",
+                  "max_usage": 1,
+                  "total_usage": 3
+                }
+              ]
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

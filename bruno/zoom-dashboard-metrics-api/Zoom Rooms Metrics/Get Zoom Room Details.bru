@@ -1,0 +1,113 @@
+meta {
+  name: Get Zoom Room Details
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/metrics/zoomroomdetail
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  from: 
+  to: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: Successful Zoom Room details response (Get Zoom Room details request)
+  
+  request: {
+    url: {{baseUrl}}/metrics/zoomroomdetail
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      from: 
+      to: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "from": "2016-04-12T00:00:00.000Z",
+          "to": "2016-04-13T00:00:00.000Z",
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 1,
+          "zoom_room": {
+            "id": "unique_id",
+            "room_name": "zoom room",
+            "email": "zoomroom@zoom.us",
+            "account_type": "Work Email",
+            "passcode": "123",
+            "status": "Available",
+            "messages": {
+              "last_started_time": "",
+              "running_time": "",
+              "selected_microphone": "",
+              "selected_speaker": "",
+              "selected_camera": ""
+            },
+            "meeting_id": ""
+          },
+          "live_meeting": {
+            "uuid": "",
+            "id": "0",
+            "host": "",
+            "email": "",
+            "user_type": "",
+            "start_time": "",
+            "end_time": "",
+            "duration": "",
+            "participants": 0,
+            "has_pstn": false,
+            "has_voip": false,
+            "has_3rd_party_audio": false,
+            "has_video": false,
+            "has_screen_share": false,
+            "recording": 0
+          },
+          "past_meetings": [
+            {
+              "uuid": "unique_id",
+              "id": "123456789",
+              "host": "Zoomie Userton",
+              "email": "email_address",
+              "user_type": "",
+              "start_time": "",
+              "end_time": "",
+              "duration": "",
+              "participants": 1,
+              "has_pstn": false,
+              "has_voip": false,
+              "has_3rd_party_audio": false,
+              "has_video": false,
+              "has_screen_share": false,
+              "recording": 0
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,85 @@
+meta {
+  name: Create a new sub-account
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/ma/account/create
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  email: 
+  first_name: 
+  last_name: 
+  password: 
+  enable_share_rc: 
+  share_rc: 
+  enable_share_mc: 
+  share_mc: 
+  pay_mode: 
+  collection_method: 
+  enable_pstn: 
+  enable_enforce_login: 
+  enable_enforce_login_sd: 
+  enforce_login_domains: 
+  meeting_capacity: 
+  disable_cmr_reminder: 
+  enable_only_host_download_cmr: 
+  enable_same_account_access_cmr: 
+}
+
+example {
+  name: Successful sub-account creation response (Example request for creating a sub-account)
+  
+  request: {
+    url: {{baseUrl}}/ma/account/create
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      email: 
+      first_name: 
+      last_name: 
+      password: 
+      enable_share_rc: 
+      share_rc: 
+      enable_share_mc: 
+      share_mc: 
+      pay_mode: 
+      collection_method: 
+      enable_pstn: 
+      enable_enforce_login: 
+      enable_enforce_login_sd: 
+      enforce_login_domains: 
+      meeting_capacity: 
+      disable_cmr_reminder: 
+      enable_only_host_download_cmr: 
+      enable_same_account_access_cmr: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "abc123def456",
+          "owner_id": "usr789xyz012",
+          "owner_email": "newuser@example.com",
+          "created_at": "2024-01-15T10:30:00.000Z"
+        }
+      '''
+    }
+  }
+}

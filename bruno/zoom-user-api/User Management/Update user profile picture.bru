@@ -1,0 +1,51 @@
+meta {
+  name: Update user profile picture
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/user/updatepassword
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  pic_file: 
+}
+
+example {
+  name: Example update user response (Example update profile picture request)
+  
+  request: {
+    url: {{baseUrl}}/user/updatepassword
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      pic_file: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "unique_id",
+          "updated_at": "2012-11-25T12:00:00.000Z"
+        }
+      '''
+    }
+  }
+}

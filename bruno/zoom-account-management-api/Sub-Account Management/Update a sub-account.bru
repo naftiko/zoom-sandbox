@@ -1,0 +1,79 @@
+meta {
+  name: Update a sub-account
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/ma/account/update
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  account_id: 
+  enable_share_rc: 
+  share_rc: 
+  enable_share_mc: 
+  share_mc: 
+  pay_mode: 
+  collection_method: 
+  enable_pstn: 
+  enable_call_out: 
+  enable_enforce_login: 
+  enable_enforce_login_sd: 
+  enforce_login_domains: 
+  meeting_capacity: 
+  disable_cmr_reminder: 
+  enable_only_host_download_cmr: 
+  enable_same_account_access_cmr: 
+}
+
+example {
+  name: Successful update sub-account response (Example request for updating a sub-account)
+  
+  request: {
+    url: {{baseUrl}}/ma/account/update
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      account_id: 
+      enable_share_rc: 
+      share_rc: 
+      enable_share_mc: 
+      share_mc: 
+      pay_mode: 
+      collection_method: 
+      enable_pstn: 
+      enable_call_out: 
+      enable_enforce_login: 
+      enable_enforce_login_sd: 
+      enforce_login_domains: 
+      meeting_capacity: 
+      disable_cmr_reminder: 
+      enable_only_host_download_cmr: 
+      enable_same_account_access_cmr: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "abc123def456",
+          "updated_at": "2024-01-16T14:25:00.000Z"
+        }
+      '''
+    }
+  }
+}

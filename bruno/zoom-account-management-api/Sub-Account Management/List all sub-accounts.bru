@@ -1,0 +1,70 @@
+meta {
+  name: List all sub-accounts
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/ma/account/list
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  api_key: 
+  api_secret: 
+}
+
+example {
+  name: Successful list sub-accounts response (Example request for listing sub-accounts)
+  
+  request: {
+    url: {{baseUrl}}/ma/account/list
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      api_key: 
+      api_secret: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 3,
+          "subAccounts": [
+            {
+              "id": "abc123def456",
+              "owner_email": "user1@example.com",
+              "created_at": "2024-01-10T08:00:00Z"
+            },
+            {
+              "id": "def456ghi789",
+              "owner_email": "user2@example.com",
+              "created_at": "2024-01-12T14:30:00Z"
+            },
+            {
+              "id": "ghi789jkl012",
+              "owner_email": "user3@example.com",
+              "created_at": "2024-01-14T09:15:00Z"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

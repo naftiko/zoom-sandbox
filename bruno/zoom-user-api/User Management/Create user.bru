@@ -1,0 +1,84 @@
+meta {
+  name: Create user
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/user/create
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  email: 
+  type: 
+  first_name: 
+  last_name: 
+  disable_chat: 
+  enable_e2e_encryption: 
+  dept: 
+  group_id: 
+  imgroup_id: 
+}
+
+example {
+  name: Example user detail response (Example create user request)
+  
+  request: {
+    url: {{baseUrl}}/user/create
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      email: 
+      type: 
+      first_name: 
+      last_name: 
+      disable_chat: 
+      enable_e2e_encryption: 
+      dept: 
+      group_id: 
+      imgroup_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "email": "email_address",
+          "id": "unique_id",
+          "created_at": "2012-11-25T12:00:00.000Z",
+          "first_name": "Zoom",
+          "last_name": "User",
+          "pic_url": "",
+          "type": 1,
+          "disable_chat": false,
+          "enable_e2e_encryption": false,
+          "enable_silent_mode": true,
+          "verified": 1,
+          "pmi": 2035134243,
+          "meeting_capacity": 0,
+          "enable_webinar": false,
+          "webinar_capacity": 0,
+          "dept": "Engineer",
+          "lastClientVersion": "",
+          "lastLoginTime": "",
+          "token": "",
+          "zpk": "",
+          "zak": ""
+        }
+      '''
+    }
+  }
+}

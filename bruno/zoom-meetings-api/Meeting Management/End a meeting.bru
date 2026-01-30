@@ -1,0 +1,51 @@
+meta {
+  name: End a meeting
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/meeting/end
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  host_id: 
+}
+
+example {
+  name: End Meeting Success Response (Meeting Host Request)
+  
+  request: {
+    url: {{baseUrl}}/meeting/end
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      host_id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "123456789",
+          "ended_at": "2024-01-15T10:30:00.000Z"
+        }
+      '''
+    }
+  }
+}

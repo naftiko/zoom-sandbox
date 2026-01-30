@@ -1,0 +1,64 @@
+meta {
+  name: List all groups
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/group/list
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  api_key: 
+  api_secret: 
+}
+
+example {
+  name: List Groups Success Response (API Credentials Request)
+  
+  request: {
+    url: {{baseUrl}}/group/list
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      api_key: 
+      api_secret: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "total_records": 2,
+          "groups": [
+            {
+              "group_id": "grp_abc123def456",
+              "account_id": "acc_xyz789ghi012",
+              "name": "Engineering Department",
+              "total_members": 25
+            },
+            {
+              "group_id": "grp_mno345pqr678",
+              "account_id": "acc_xyz789ghi012",
+              "name": "Marketing Department",
+              "total_members": 18
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

@@ -1,0 +1,71 @@
+meta {
+  name: List IM group members
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/im/group/member/list
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  page_size: 
+  page_number: 
+}
+
+example {
+  name: List IM Group Members Success Response (List IM Group Members Request)
+  
+  request: {
+    url: {{baseUrl}}/im/group/member/list
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      page_size: 
+      page_number: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "page_count": 1,
+          "page_number": 1,
+          "page_size": 30,
+          "total_records": 2,
+          "members": [
+            {
+              "id": "usr_111222333",
+              "email": "john.doe@example.com",
+              "first_name": "John",
+              "last_name": "Doe",
+              "pic_url": "https://zoom.us/p/user123/profile-pic-abc123"
+            },
+            {
+              "id": "usr_444555666",
+              "email": "jane.smith@example.com",
+              "first_name": "Jane",
+              "last_name": "Smith",
+              "pic_url": "https://zoom.us/p/user456/profile-pic-def456"
+            }
+          ]
+        }
+      '''
+    }
+  }
+}

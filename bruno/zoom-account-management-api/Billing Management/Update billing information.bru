@@ -1,0 +1,67 @@
+meta {
+  name: Update billing information
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/ma/account/billing/update
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  account_id: 
+  first_name: 
+  last_name: 
+  phone_number: 
+  address: 
+  apt: 
+  city: 
+  country: 
+  state: 
+  zip: 
+}
+
+example {
+  name: Successful billing update response (Example request for updating billing information)
+  
+  request: {
+    url: {{baseUrl}}/ma/account/billing/update
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      account_id: 
+      first_name: 
+      last_name: 
+      phone_number: 
+      address: 
+      apt: 
+      city: 
+      country: 
+      state: 
+      zip: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "abc123def456",
+          "updated_at": "2024-01-18T11:45:00.000Z"
+        }
+      '''
+    }
+  }
+}

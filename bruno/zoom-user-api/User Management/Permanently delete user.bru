@@ -1,0 +1,52 @@
+meta {
+  name: Permanently delete user
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/user/permanentdelete
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+  email: 
+}
+
+example {
+  name: Example permanent delete response (Example permanent delete request)
+  
+  request: {
+    url: {{baseUrl}}/user/permanentdelete
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+      email: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "id": "unique_id",
+          "email": "email_address",
+          "deleted_at": "2013-09-02T12:00:00.000Z"
+        }
+      '''
+    }
+  }
+}

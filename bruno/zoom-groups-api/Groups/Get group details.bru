@@ -1,0 +1,51 @@
+meta {
+  name: Get group details
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/group/get
+  body: formUrlEncoded
+  auth: inherit
+}
+
+body:form-urlencoded {
+  id: 
+}
+
+example {
+  name: Get Group Success Response (Group ID Request)
+  
+  request: {
+    url: {{baseUrl}}/group/get
+    method: POST
+    mode: formUrlEncoded
+    body:form-urlencoded: {
+      id: 
+    }
+  }
+  
+  response: {
+    headers: {
+      Content-Type: application/json
+    }
+  
+    status: {
+      code: 200
+      text: OK
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "group_id": "grp_abc123def456",
+          "account_id": "acc_xyz789ghi012",
+          "name": "Engineering Department",
+          "total_members": 25
+        }
+      '''
+    }
+  }
+}
