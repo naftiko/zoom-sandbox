@@ -1,0 +1,449 @@
+specificationVersion: '0.19'
+
+aid: zoom-sandbox
+type: Sandbox
+visibility: Public
+
+name: Zoom API & MCP Sandbox
+description: >-
+  This is a Zoom sandbox that uses OpenAPI, Microcks, Bruno, and
+  Backstage to provide a 3rd-party REST API and MCP sandbox for Zoom.
+
+tags:
+  - Videos
+  - Webinars
+  - Meetings
+
+image: https://naftiko.s3.us-east-1.amazonaws.com/naftiko-logo-blue-icon.png
+
+created: '2026-02-13'
+modified: '2026-02-13'
+
+url: https://github.com/naftiko/zoom-sandbox/blob/main/README.md
+
+apis:
+
+    - aid: zoom:zoom-account-management-api
+      name: Zoom Account Management API
+      description: >-
+        The Zoom Account Management API enables master account administrators to
+        manage sub-accounts within their organization. This API provides
+        functionality for creating, updating, deleting, and retrieving
+        sub-account information, as well as managing billing and subscription
+        plans.**Key Features:**- Create and manage sub-accounts under a master
+        account- Configure billing information and payment methods- Subscribe to
+        and manage various Zoom plans- Control account settings such as meeting
+        capacity and recording options**Note:** Your account must be a master
+        account with appropriate privileges to use these endpoints.
+      tags:
+        - Account
+        - Sub-account Management
+        - Billing Management
+        - Plan Management
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-account-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-account-management-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-account-management-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-account-backstage-original.yml
+
+    - aid: zoom:zoom-chat-messages-api
+      name: Zoom Chat Messages API
+      description: >-
+        The Zoom Chat Messages API provides access to archived chat message
+        history within your Zoom organization. This API enables administrators
+        to retrieve chat sessions and their associated messages for compliance,
+        auditing, and archival purposes.**Key Features:**- Retrieve chat history
+        lists for specified time periods- Access detailed chat messages within
+        specific sessions- Support for pagination through large result sets-
+        Filter chat history by email address**Note:** Access requires
+        administrative privileges with archived chat message viewing
+        permissions.
+      tags:
+        - Chat
+        - Chat History
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-chat-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-chat-messages-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-chat-messages-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-chat-backstage-original.yml
+
+    - aid: zoom:zoom-h323sip-device-management-api
+      name: Zoom H323sip Device Management API
+      description: >-
+        The Zoom H.323/SIP Device Management API enables administrators to
+        manage video conferencing devices within their Zoom organization. This
+        API provides complete CRUD (Create, Read, Update, Delete) operations for
+        H.323 and SIP protocol devices.**Key Features:**- Register new H.323 and
+        SIP devices- List all configured devices with pagination support- Update
+        device settings including name, IP address, protocol, and encryption-
+        Remove devices from your Zoom account**Supported Protocols:**- H.323:
+        Standard protocol for video conferencing equipment- SIP: Session
+        Initiation Protocol for IP-based communications**Encryption Options:**-
+        No encryption- Required encryption- Auto-negotiate encryption
+      tags:
+        - Device
+        - Device Management
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-device-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-h323sip-device-management-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-h323sip-device-management-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-device-backstage-original.yml
+
+    - aid: zoom:zoom-groups-api
+      name: Zoom Groups API
+      description: >-
+        The Zoom Groups API enables management of user groups within a Zoom
+        account.This API provides endpoints to create, retrieve, update, and
+        delete groups, as well as managegroup membership. Groups help organize
+        users for administrative purposes, permissions management,and
+        streamlined meeting scheduling.
+      tags:
+        - Group
+        - Group Members
+        - Groups
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-group-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-groups-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-groups-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-group-backstage-original.yml
+
+    - aid: zoom:zoom-instant-messaging-groups-api
+      name: Zoom Instant Messaging Groups API
+      description: >-
+        The Zoom Instant Messaging (IM) Groups API enables management of IM
+        groups within a Zoom account.This API provides endpoints to create,
+        retrieve, update, and delete IM groups, as well as managegroup
+        membership. IM groups allow users to organize contacts for quick
+        messaging and collaboration.
+      tags:
+        - Im Group
+        - Im Group Members
+        - Im Groups
+        - Instant Messaging Metrics
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-im-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-instant-messaging-groups-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-instant-messaging-groups-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-im-backstage-original.yml
+
+    - aid: zoom:zoom-meetings-api
+      name: Zoom Meetings API
+      description: >-
+        The Zoom Meetings API enables comprehensive management of meetings
+        within a Zoom account.This API provides endpoints to create, retrieve,
+        update, and delete meetings, as well asmanage meeting registrations and
+        view live meeting status. Supports instant, scheduled,and recurring
+        meeting types with full configuration options.
+      tags:
+        - Meeting
+        - Meeting Information
+        - Meeting Management
+        - Meeting Registration
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-meeting-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-meetings-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-meetings-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-meeting-backstage-original.yml
+
+    - aid: zoom:zoom-dashboard-metrics-api
+      name: Zoom Dashboard Metrics API
+      description: >-
+        API for accessing Zoom dashboard metrics and analytics. This API
+        provides real-time and historical analytics data for meetings, webinars,
+        Zoom Rooms, instant messaging usage, quality of service (QoS) metrics,
+        and CRC port usage. Ideal for monitoring platform performance and user
+        engagement.
+      tags:
+        - Dashboard
+        - Meeting Metrics
+        - Webinar Metrics
+        - Zoom Rooms Metrics
+        - Crc Metrics
+        - Quality Of Service
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-metrics-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-dashboard-metrics-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-dashboard-metrics-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-metrics-backstage-original.yml
+
+    - aid: zoom:zoom-rest-api
+      name: Zoom Rest API
+      description: API Description
+      tags:
+        - Tags
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-rest-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-rest-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-backstage-original.yml
+
+    - aid: zoom:zoom-cloud-recording-api
+      name: Zoom Cloud Recording API
+      description: >-
+        API for managing cloud recordings on Zoom. This API provides
+        functionality to list, retrieve, and delete cloud recordings stored on
+        Zoom servers and Meeting Connector devices. Cloud recordings allow users
+        to record meetings and webinars to the Zoom cloud, making them
+        accessible for playback and download.
+      tags:
+        - Cloud Recording
+        - Cloud Recordings
+        - Meeting Connector Recordings
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-recording-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-cloud-recording-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-cloud-recording-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-recording-backstage-original.yml
+
+    - aid: zoom:zoom-report-api
+      name: Zoom Report API
+      description: >-
+        The Zoom Report API provides endpoints for retrieving various usage and
+        activity reports for your Zoom account. This includes account-level
+        reports, user-specific reports, daily usage summaries, and
+        audio/telephony usage reports.These reports help administrators monitor
+        meeting activity, track participant engagement,and analyze telephony
+        usage across their organization.
+      tags:
+        - Report
+        - Account Reports
+        - Audio Reports
+        - User Reports
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-report-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-report-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-report-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-report-backstage-original.yml
+
+    - aid: zoom:zoom-user-api
+      name: Zoom User API
+      description: >-
+        The Zoom User API provides comprehensive user management capabilities
+        for your Zoom account.This includes creating, updating, activating,
+        deactivating, and deleting users, as well asmanaging user settings,
+        assistants, and authentication tokens.## User Types- **Type 1 (Basic)**:
+        Can host meetings up to 40 minutes- **Type 2 (Pro)**: Licensed user with
+        full meeting capabilities  - **Type 3 (Corp)**: Corporate user with
+        enterprise features## AuthenticationAll API requests require
+        authentication using API key and secret.
+      tags:
+        - User
+        - User Assistants
+        - User Authentication
+        - User Lookup
+        - User Management
+        - User Status
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-user-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-user-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-user-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-user-backstage-original.yml
+
+    - aid: zoom:zoom-webinar-api
+      name: Zoom Webinar API
+      description: >-
+        The Zoom Webinar API provides comprehensive webinar management
+        capabilities for your Zoom account.This includes creating, updating, and
+        deleting webinars, managing registrations and attendees,handling
+        panelists, and retrieving webinar data such as polls and Q&A.## Webinar
+        Types- **Type 5**: Standard webinar (single occurrence)- **Type 6**:
+        Recurring webinar (no fixed time)- **Type 9**: Recurring webinar with
+        fixed time## Registration Types- **Type 1**: Attendees register once and
+        can attend any occurrence- **Type 2**: Attendees must register for each
+        occurrence- **Type 3**: Attendees register once and choose which
+        occurrences to attend## AuthenticationAll API requests require
+        authentication using API key and secret.
+      tags:
+        - Webinar
+        - Webinar Attendees
+        - Webinar Engagement
+        - Webinar Lookup
+        - Webinar Management
+        - Webinar Panelists
+        - Webinar Registration
+      properties:
+
+        - type: OpenApi
+          url: openapi/zoom-webinar-openapi-original.yml
+        - type: MockRestServer
+          url: http://localhost:8080/rest/zoom-webinar-api/1.0.0
+        - type: MockMCPServer
+          url: http://localhost:8080/rest/zoom-webinar-api/1.0.0/sse
+        - type: BackstageApi
+          url: backstage/zoom-webinar-backstage-original.yml
+
+
+common:
+
+  - type: Summary
+    data:
+      numberOfApis: 12
+      numberOfPaths: 186
+      numberOfOperations: 186
+      numberOfReadOperations: 0
+      numberOfWriteOperations: 186
+      numberOfSchemas: 199
+      numberOfExamples: 163
+      tags:
+        - Account
+        - Account Reports
+        - Audio Reports
+        - Billing Management
+        - Chat
+        - Chat History
+        - Cloud Recording
+        - Cloud Recordings
+        - Crc Metrics
+        - Dashboard
+        - Device
+        - Device Management
+        - Group
+        - Group Members
+        - Groups
+        - Im Group
+        - Im Group Members
+        - Im Groups
+        - Instant Messaging Metrics
+        - Meeting
+        - Meeting Connector Recordings
+        - Meeting Information
+        - Meeting Management
+        - Meeting Metrics
+        - Meeting Registration
+        - Plan Management
+        - Quality Of Service
+        - Report
+        - Schedule Privileges
+        - Sub-account Management
+        - User
+        - User Assistants
+        - User Authentication
+        - User Lookup
+        - User Management
+        - User Reports
+        - User Status
+        - Webinar
+        - Webinar Attendees
+        - Webinar Engagement
+        - Webinar Lookup
+        - Webinar Management
+        - Webinar Metrics
+        - Webinar Panelists
+        - Webinar Registration
+        - Zoom Rooms Metrics
+
+  - type: GitHubHttpUrl
+    url: https://github.com/naftiko/zoom-sandbox
+
+  - type: GitHubSshUrl
+    url: git@github.com:naftiko/zoom-sandbox.git
+
+  - type: GitHubIssues
+    url: https://github.com/naftiko/zoom-sandbox/issues
+
+  - type: GitHubDiscussions
+    url: https://github.com/orgs/naftiko/discussions
+
+  - type: Standards
+    data:
+
+      - name: APIs.json
+        description: This uses the APIs.json
+        docUrl: http://apisjson.org/
+
+      - name: OpenAPI
+        description: This uses OpenAPI to define access to all HTTP APIs.
+        docUrl: https://spec.openapis.org/oas/latest.html
+
+      - name: JSON Schema
+        description: This uses JSON Schema to define and validate all entities used.
+        docUrl: https://json-schema.org/specification
+
+      - name: Model Context Protocol
+        description: This uses MCP expresed as JSON schema to define each MCP server.
+        docUrl: https://modelcontextprotocol.io/
+
+      - name: Bruno Collections
+        description: This uses Bruno Collections to define each executable HTTP API integration.
+        docUrl: https://docs.usebruno.com/
+
+      - name: Bruno Environments
+        description: This uses Bruno Environments to store keys for each API to use in automation.
+        docUrl: https://docs.usebruno.com/secrets-management/overview
+
+      - name: API Commons
+        description: This uses an API Commons schema to define the plans and rate limits.
+        docUrl: https://apicommons.org/
+
+  - type: Services
+    data:
+
+      - aid: zoom
+        name: Zoom API & MCP Sandbox
+        description: >-
+          This is a Zoom sandbox that uses OpenAPI, Microcks, Bruno, and Backstage
+          to provide a 3rd-party REST API and MCP sandbox for Zoom.
+        docUrl: https://naftiko.github.io/technology/docs/services/zoom/
+        apisJson: >-
+          https://raw.githubusercontent.com/api-evangelist/zoom/refs/heads/main/apis.yml
+
+
+maintainers:
+
+  - FN: Kin Lane
+    email: kinlane@naftiko.io

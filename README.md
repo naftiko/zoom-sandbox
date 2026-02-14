@@ -1,8 +1,11 @@
 # Zoom API & MCP Sandbox
 This is an API sandbox for the Zoom API & MCP Sandbox, using an OpenAPI specification with examples, Microcks and Bruno as the sandbox interface, and this GitHub repository as the vehicle for delivering a localized sandbox.
 
+## APIs.json
+There is an APIs.yml file in the root of this repository, providing an index of all the artifacts used as part of this API sandbox, providing a machine-readable way to read, manage, and execute the sandbox available here.
+
 ## OpenAPI
-This sandbox uses OpenAPI as the definition, providing [a complete definition of all available paths for the Zoom API & MCP Sandbox. The OpenAPI for this sandnbox uses examples and Microcks extensions to mock the requests and responses for each API operation, something we will iterate and expand upon with richer examples as we move forward.
+This sandbox uses OpenAPI as the definition, providing a complete definition of all available paths for the Zoom API & MCP Sandbox. The OpenAPI for this sandnbox uses examples and Microcks extensions to mock the requests and responses for each API operation, something we will iterate and expand upon with richer examples as we move forward.
 
 ## Microcks
 This sandbox uses Microcks to deliver the mock API. [You just install Microcks, with the Docker extension being the easiest](https://microcks.io/documentation/guides/installation/docker-desktop-extension/), [import the OpenAPI as a service](openapi/notion-openapi.yml), and you have a mocked API for all APIs, available via REST and MCP APIs--providing a multi-protocol sandbox.
@@ -202,6 +205,7 @@ We provide a Backstage software catalog entity for the Zoom API & MCP Sandbox, a
   - [Zoom Report API](backstage/zoom-report-backstage-original.yml)
   - [Zoom User API](backstage/zoom-user-backstage-original.yml)
   - [Zoom Webinar API](backstage/zoom-webinar-backstage-original.yml)
+
 ## Support
 Please provide any questions or feedback via GitHub issues, or just email kinlane@naftiko.io with feedback. The goal is to keep iterating upon this sandbox using existing OpenAPI, Microcks, and Bruno features, offering value out of the box via this forkable third-party Zoom API & MCP Sandbox.
 
